@@ -1,21 +1,26 @@
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-let newTourists = touristSpots.map( (place) => {
-	const newPlaceArr = place.split(" ");
-	let articleLessString = ""
-	for( let word of newPlaceArr){
-		if( word !== 'an' && word !== 'An' && word !== 'the' && word !== 'The' && word !== 'A' && word !== 'a')
-		{
-			articleLessString += word + " ";
-		}
-	}
-	return articleLessString.trim();
-} )
-newTourists.sort()
-touristSpots = newTourists;
+// Array of band names
+let bandNames = ['The Rolling Stones', 'Red Hot Chili Peppers', 'Led Zeppelin', 'Aerosmith', 'The Beatles'];
 
-let list = document.getElementsByClassName("myList");
-touristSpots.forEach( (place) => {
-    const liElement = document.createElement('li');
-    liElement.textContent=place;
-    list.appendChild(liElement);
-} )
+// Function to remove articles from band names
+const removeArticles = (name) => {
+  return name.replace(/^(a|an|the)\s+/i, '');
+};
+
+// Sorting the band names in lexicographic order excluding articles
+bandNames.sort((a, b) => {
+  const nameA = removeArticles(a);
+  const nameB = removeArticles(b);
+  return nameA.localeCompare(nameB);
+});
+
+// Accessing the <ul> element with id 'band'
+const ulElement = document.getElementById('band');
+
+// Creating and appending <li> elements for each band name
+bandNames.forEach((name) => {
+  const liElement = document.createElement('li');
+  liElement.textContent = name;
+  ulElement.appendChild(liElement);
+});
+
+
