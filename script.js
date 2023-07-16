@@ -1,26 +1,13 @@
-// Array of band names
-let bandNames = ['The Rolling Stones', 'Red Hot Chili Peppers', 'Led Zeppelin', 'Aerosmith', 'The Beatles'];
+//your code here
+const listItem=document.getElementById("list");
 
-// Function to remove articles from band names
-const removeArticles = (name) => {
-  return name.replace(/^(a|an|the)\s+/i, '');
-};
+let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
-// Sorting the band names in lexicographic order excluding articles
-bandNames.sort((a, b) => {
-  const nameA = removeArticles(a);
-  const nameB = removeArticles(b);
-  return nameA.localeCompare(nameB);
-});
+touristSpots.sort();
 
-// Accessing the <ul> element with id 'band'
-const ulElement = document.getElementById('band');
+touristSpots.forEach((item)=>{
+	const list=document.createElement("li");
+	list.innerText=item;
 
-// Creating and appending <li> elements for each band name
-bandNames.forEach((name) => {
-  const liElement = document.createElement('li');
-  liElement.textContent = name;
-  ulElement.appendChild(liElement);
-});
-
-
+	listItem.appendChild(list);
+})
